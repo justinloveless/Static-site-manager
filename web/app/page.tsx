@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!isLoading && session) {
-      router.replace("/Static-site-manager/dashboard");
+      router.replace("/dashboard");
     }
   }, [isLoading, router, session]);
 
@@ -33,7 +33,7 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap items-center gap-3 text-sm font-medium">
             <Link
-              href="/Static-site-manager/login"
+              href="/login"
               className="inline-flex items-center gap-2 rounded-full bg-indigo-500/90 px-6 py-3 text-slate-950 shadow-[0_20px_45px_-20px_rgba(99,102,241,0.9)] transition hover:bg-indigo-400"
             >
               Launch dashboard
@@ -98,7 +98,7 @@ export default function Home() {
                 <p className="text-xs text-slate-300/80">Tonight · 11:30 PM UTC · GitHub Actions runner</p>
               </div>
               <Link
-                href="/Static-site-manager/login"
+                href="/login"
                 className="rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-slate-900 hover:bg-white"
               >
                 Review tasks

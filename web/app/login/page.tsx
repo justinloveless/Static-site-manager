@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (!isLoading && session) {
-      router.replace("/Static-site-manager/dashboard");
+      router.replace("/dashboard");
     }
   }, [isLoading, router, session]);
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
         <section className="space-y-6">
           <LoginForm />
           <p className="text-center text-xs text-slate-400/75">
-            <Link href="/Static-site-manager/" className="text-slate-200 hover:text-white">
+            <Link href="/" className="text-slate-200 hover:text-white">
               ← Back to marketing site
             </Link>
           </p>

@@ -1,0 +1,15 @@
+project_id = "static-sites-manager"
+
+[api]
+port = 54321
+schemas = ["public", "storage"]
+studio_port = 54323
+
+[db]
+shadow = true
+
+[functions]
+ignore = ["**/node_modules/**", "**/.next/**"]
+
+[storage]
+file_size_limit = 10485760

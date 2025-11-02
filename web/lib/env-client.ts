@@ -19,6 +19,7 @@ const clientSchema = z.object({
     return val;
   }, z.number().int().positive()),
   NEXT_PUBLIC_BASE_PATH: z.string().optional(),
+  NEXT_PUBLIC_GITHUB_APP_CLIENT_ID: z.string().optional(),
 });
 
 function parseEnv<T extends z.ZodTypeAny>(schema: T, values: Record<string, unknown>) {
@@ -42,4 +43,5 @@ export const clientEnv = parseEnv(clientSchema, {
   SITE_ASSETS_BUCKET: process.env.SITE_ASSETS_BUCKET ?? SITE_ASSETS_BUCKET_DEFAULT,
   MAX_ASSET_SIZE_BYTES: process.env.MAX_ASSET_SIZE_BYTES ?? MAX_ASSET_SIZE_BYTES_DEFAULT,
   NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH,
+  NEXT_PUBLIC_GITHUB_APP_CLIENT_ID: process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID,
 });

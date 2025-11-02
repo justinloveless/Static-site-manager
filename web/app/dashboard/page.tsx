@@ -10,18 +10,19 @@ import type { Session } from "@supabase/supabase-js";
 import { SignOutButton } from "./sign-out-button";
 import type { Database } from "@/types/database";
 
-type SiteListItem = {
-  id: string;
-  name: string;
-  repo_full_name: string;
-  default_branch: string;
-  github_app_slug: string | null;
-  updated_at: string;
-};
+type SiteListItem = Pick<
+  Database["public"]["Tables"]["sites"]["Row"],
+  "id" | "name" | "repo_full_name" | "default_branch" | "github_app_slug" | "updated_at"
+>;
 
 type DashboardEntry = {
-  role: string;
+  role: Database["public"]["Tables"]["site_members"]["Row"]["role"];
   site: SiteListItem;
+};
+
+type SiteMembershipRow = {
+  role: Database["public"]["Tables"]["site_members"]["Row"]["role"];
+  site: SiteListItem | null;
 };
 
 export default function DashboardPage() {
@@ -43,13 +44,14 @@ export default function DashboardPage() {
         .from("site_members")
         .select("role, site:sites(id, name, repo_full_name, default_branch, github_app_slug, updated_at)")
         .eq("user_id", targetSession.user.id)
-        .order("created_at", { ascending: false });
+        .order("created_at", { ascending: false })
+        .returns<SiteMembershipRow[]>();
 
       if (error) {
         setFetchError(error.message ?? "Failed to load sites");
         setSites([]);
       } else {
-        const filtered = (data ?? []).flatMap((membership) =>
+        const filtered: DashboardEntry[] = (data ?? []).flatMap((membership) =>
           membership.site ? [{ role: membership.role, site: membership.site }] : [],
         );
         setSites(filtered);

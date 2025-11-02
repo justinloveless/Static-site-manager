@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (!isLoading && session) {
-      router.replace("/dashboard");
+      router.replace("/Static-site-manager/dashboard");
     }
   }, [isLoading, router, session]);
 
@@ -31,7 +31,7 @@ export default function LoginPage() {
         Need access? Ask an existing site owner to invite you via the site members panel once onboarding is complete.
       </p>
       <p className="text-center text-xs text-neutral-500">
-        <Link href="/" className="text-neutral-300 hover:text-white">
+        <Link href="/Static-site-manager/" className="text-neutral-300 hover:text-white">
           Back to marketing site
         </Link>
       </p>

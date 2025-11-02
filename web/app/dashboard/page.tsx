@@ -64,7 +64,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!isLoading && !session) {
-      router.replace("/login");
+      router.replace("/Static-site-manager/login");
       setSites([]);
       setFetchError(null);
       setLoadingSites(false);
@@ -110,7 +110,7 @@ export default function DashboardPage() {
         </p>
         <div className="mt-4 flex justify-center">
           <Link
-            href="/sites/new"
+            href="/Static-site-manager/sites/new"
             className="rounded-md border border-neutral-700 px-4 py-2 text-sm text-neutral-200 transition hover:border-neutral-500 hover:text-white"
           >
             Install GitHub App
@@ -148,7 +148,7 @@ export default function DashboardPage() {
             </dl>
             <div className="mt-6 flex items-center justify-between gap-3">
               <Link
-                href={`/sites/${site.id}`}
+                href={`/Static-site-manager/sites/${site.id}`}
                 className="rounded-md bg-white/90 px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:bg-white"
               >
                 Open workspace
@@ -177,7 +177,7 @@ export default function DashboardPage() {
         </div>
         <div className="flex items-center gap-3">
           <Link
-            href="/sites/new"
+            href="/Static-site-manager/sites/new"
             className="rounded-md bg-white px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-200"
           >
             Add site

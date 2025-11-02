@@ -15,7 +15,7 @@ const clientSchema = z.object({
     }
     return val;
   }, z.number().int().positive()),
-  NEXT_PUBLIC_BASE_PATH: z.string().min(1).optional(),
+  NEXT_PUBLIC_BASE_PATH: z.string().optional(),
 });
 
 function parseEnv<T extends z.ZodTypeAny>(schema: T, values: Record<string, unknown>) {

@@ -3,13 +3,9 @@ project_id = "static-sites-manager"
 [api]
 port = 54321
 schemas = ["public", "storage"]
-studio_port = 54323
 
 [db]
-shadow = true
+major_version = 15
 
-[functions]
-ignore = ["**/node_modules/**", "**/.next/**"]
-
-[storage]
-file_size_limit = 10485760
+[functions.github-commit-batch]
+verify_jwt = false

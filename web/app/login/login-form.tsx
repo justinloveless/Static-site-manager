@@ -74,9 +74,10 @@ export function LoginForm() {
       setLoading(true);
       setError(null);
       try {
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
         const { error: oauthError } = await supabase.auth.signInWithOAuth({
           provider: "github",
-          options: { redirectTo: `${window.location.origin}/dashboard` },
+          options: { redirectTo: `${window.location.origin}${basePath}/dashboard` },
         });
         if (oauthError) {
           throw oauthError;

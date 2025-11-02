@@ -73,7 +73,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!isLoading && !session) {
-      router.replace("/Static-site-manager/login");
+      router.replace("/login");
       startStateTransition(() => {
         setSites([]);
         setFetchError(null);
@@ -170,7 +170,7 @@ export default function DashboardPage() {
         </div>
         <div className="flex flex-wrap justify-center gap-3 text-sm">
           <Link
-            href="/Static-site-manager/sites/new"
+            href="/sites/new"
             className="inline-flex items-center gap-2 rounded-full bg-indigo-500/90 px-5 py-2 font-semibold text-slate-950 hover:bg-indigo-400"
           >
             Install GitHub App
@@ -229,7 +229,7 @@ export default function DashboardPage() {
                 </span>
                 <div className="flex flex-wrap gap-2 text-xs font-medium md:justify-end">
                   <Link
-                    href={`/Static-site-manager/sites/${site.id}`}
+                    href={`/sites/${site.id}`}
                     className="inline-flex items-center gap-1 rounded-full bg-white/90 px-4 py-2 text-slate-950 hover:bg-white"
                   >
                     Open workspace
@@ -270,7 +270,7 @@ export default function DashboardPage() {
                 </div>
               </div>
               <Link
-                href="/Static-site-manager/sites/new"
+                href="/sites/new"
                 className="inline-flex items-center gap-2 rounded-full bg-white/90 px-5 py-2 text-sm font-semibold text-slate-900 hover:bg-white"
               >
                 Add new site
@@ -312,7 +312,7 @@ export default function DashboardPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400/80">Quick actions</p>
             <div className="mt-4 space-y-3 text-sm">
               <Link
-                href="/Static-site-manager/sites/new"
+                href="/sites/new"
                 className="flex items-center justify-between rounded-2xl border border-white/0 bg-white/10 px-4 py-3 text-slate-200 transition hover:border-white/20 hover:bg-white/20"
               >
                 Add GitHub repository

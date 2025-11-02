@@ -6,6 +6,7 @@ import { useCallback, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type { Database } from "@/types/database";
+import { clientEnv } from "@/lib/env-client";
 
 type AuthMode = "sign-in" | "sign-up";
 
@@ -43,7 +44,7 @@ export function LoginForm() {
           if (signInError) {
             throw signInError;
           }
-          router.replace("/Static-site-manager/dashboard");
+          router.replace("/dashboard");
           router.refresh();
         } else {
           const { error: signUpError, data } = await supabase.auth.signUp({
@@ -54,7 +55,7 @@ export function LoginForm() {
             throw signUpError;
           }
           if (data.session) {
-            router.replace("/Static-site-manager/dashboard");
+            router.replace("/dashboard");
             router.refresh();
           } else {
             setMessage("Check your inbox to confirm your email address.");
@@ -74,10 +75,11 @@ export function LoginForm() {
       setLoading(true);
       setError(null);
       try {
-        const basePath = '/Static-site-manager';
+        const basePath = clientEnv.NEXT_PUBLIC_BASE_PATH ?? "";
+        const redirectTo = new URL(`${basePath}/dashboard`, window.location.origin);
         const { error: oauthError } = await supabase.auth.signInWithOAuth({
           provider: "github",
-          options: { redirectTo: `${window.location.origin}${basePath}/dashboard` },
+          options: { redirectTo: redirectTo.toString() },
         });
         if (oauthError) {
           throw oauthError;

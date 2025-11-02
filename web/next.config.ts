@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
-const repoName = process.env.NEXT_PUBLIC_BASE_PATH?.trim().replace(/^\/+|\/+$/g, "") ?? "";
-const inferredBasePath = repoName ? `/${repoName}` : "";
+const basePath = "/Static-site-manager";
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -9,8 +8,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: inferredBasePath || undefined,
-  assetPrefix: inferredBasePath ? `${inferredBasePath}/` : undefined,
+  basePath: basePath,
+  assetPrefix: `${basePath}/`,
 };
 
 export default nextConfig;

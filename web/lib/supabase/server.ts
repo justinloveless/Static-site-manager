@@ -6,7 +6,7 @@ import {
   createRouteHandlerClient,
 } from '@supabase/auth-helpers-nextjs';
 
-import { env } from '@/lib/env';
+import { env } from '@/lib/env-server';
 import type { Database } from '@/types/database';
 
 export const createServerSupabaseClient = () =>

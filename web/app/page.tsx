@@ -1,17 +1,20 @@
+"use client";
+
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSession, useSessionContext } from "@supabase/auth-helpers-react";
 
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+export default function Home() {
+  const router = useRouter();
+  const session = useSession();
+  const { isLoading } = useSessionContext();
 
-export default async function Home() {
-  const supabase = createServerSupabaseClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session) {
-    redirect("/dashboard");
-  }
+  useEffect(() => {
+    if (!isLoading && session) {
+      router.replace("/dashboard");
+    }
+  }, [isLoading, router, session]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-10 px-6 py-16 text-center">

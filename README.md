@@ -60,6 +60,14 @@ Web application for managing GitHub Pages static sites with Supabase-backed stor
 - `github-commit-batch`: orchestrates staged asset commits via GitHub REST API
 - Both functions expect Supabase + GitHub App secrets to be present in the runtime environment
 
+## GitHub Pages deployment
+
+- Frontend builds as a fully static export (`next.config.ts` sets `output: "export"`) so it can ship from GitHub Pages
+- Workflow `.github/workflows/deploy-pages.yml` builds the app with Bun and publishes `web/out` to Pages on pushes to `main`
+- Repository Secrets required: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- Optional Repository Variables: `NEXT_PUBLIC_BASE_PATH` (set to repo name for project pages), `SITE_ASSETS_BUCKET`, `MAX_ASSET_SIZE_BYTES`
+- Enable Pages in repository settings, pick the `GitHub Actions` source, and the workflow will handle subsequent deploys automatically
+
 ## Next steps
 
 - Implement site onboarding UI (`/sites/new`) to drive GitHub App install flow

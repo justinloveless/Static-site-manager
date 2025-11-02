@@ -35,6 +35,13 @@ Sign-up and login routes are served at `/login`; authenticated users land on `/d
 ## Scripts
 
 - `bun run dev` ? start Next.js dev server
-- `bun run build` ? production build
-- `bun run start` ? run production server locally
+- `bun run build` ? produce static export in `out/`
+- `bun run start` ? run production server locally (not required for Pages)
 - `bun run lint` ? lint with ESLint + Next.js config
+
+## Deploying to GitHub Pages
+
+- Static export is enabled via `next.config.ts` (`output: "export"`, `trailingSlash: true`)
+- Set repository secrets before publishing: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- Optional repository variables: `NEXT_PUBLIC_BASE_PATH` (use repo name for project Pages), `SITE_ASSETS_BUCKET`, `MAX_ASSET_SIZE_BYTES`
+- GitHub Actions workflow `../.github/workflows/deploy-pages.yml` builds with Bun and uploads `out/`; enable Pages with source `GitHub Actions`

@@ -8,10 +8,10 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 type ProvidersProps = {
   children: React.ReactNode;
-  initialSession: Session | null;
+  initialSession?: Session | null;
 };
 
-export function Providers({ children, initialSession }: ProvidersProps) {
+export function Providers({ children, initialSession = null }: ProvidersProps) {
   const [supabaseClient] = useState(() => getSupabaseBrowserClient());
 
   return (

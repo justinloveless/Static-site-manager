@@ -183,7 +183,7 @@ export interface Database {
         };
       };
     };
-    Views: {};
+    Views: Record<string, never>;
     Functions: {
       is_site_member: {
         Args: { target_site_id: string };
@@ -195,8 +195,8 @@ export interface Database {
       };
       set_current_timestamp_updated_at?: never;
     };
-    Enums: {};
-    CompositeTypes: {};
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
   storage: {
     Tables: {
@@ -265,8 +265,8 @@ export interface Database {
         };
       };
     };
-    Functions: {};
-    Enums: {};
-    CompositeTypes: {};
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 }

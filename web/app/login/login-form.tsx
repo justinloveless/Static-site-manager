@@ -91,17 +91,15 @@ export function LoginForm() {
   );
 
   return (
-    <div className="space-y-6 rounded-xl border border-neutral-800 bg-neutral-900/60 p-6 shadow-lg">
-      <header className="space-y-1 text-center">
-        <h2 className="text-xl font-semibold text-white">{modeCopy.title}</h2>
-        <p className="text-xs text-neutral-400">
-          Use your Supabase credentials or continue with GitHub.
-        </p>
+    <div className="space-y-7 rounded-[24px] border border-white/10 bg-white/5 p-8 shadow-[0_35px_100px_-60px_rgba(15,23,42,0.9)] backdrop-blur-xl">
+      <header className="space-y-2 text-center">
+        <h2 className="text-2xl font-semibold text-white">{modeCopy.title}</h2>
+        <p className="text-xs text-slate-300/80">Use your Supabase credentials or continue with GitHub OAuth.</p>
       </header>
       <button
         type="button"
         onClick={handleOAuth}
-        className="flex w-full items-center justify-center gap-2 rounded-md bg-neutral-800 px-4 py-2 text-sm font-medium text-neutral-100 transition hover:bg-neutral-700"
+        className="flex w-full items-center justify-center gap-2 rounded-full bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-[0_20px_50px_-30px_rgba(99,102,241,0.8)] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
         disabled={loading}
       >
         <svg
@@ -114,14 +112,14 @@ export function LoginForm() {
         </svg>
         Continue with GitHub
       </button>
-      <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-neutral-600">
-        <span aria-hidden className="h-px flex-1 bg-neutral-800" />
+      <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.35em] text-slate-400/70">
+        <span aria-hidden className="h-px flex-1 bg-white/15" />
         or
-        <span aria-hidden className="h-px flex-1 bg-neutral-800" />
+        <span aria-hidden className="h-px flex-1 bg-white/15" />
       </div>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="space-y-2 text-left">
-          <label htmlFor="email" className="text-xs font-medium text-neutral-300">
+          <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400/80">
             Email
           </label>
           <input
@@ -129,17 +127,19 @@ export function LoginForm() {
             type="email"
             autoComplete="email"
             required
-            className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 outline-none transition focus:border-neutral-500 focus:ring-2 focus:ring-neutral-500/40"
+            className="w-full rounded-xl border border-white/10 bg-slate-950/70 px-3 py-3 text-sm text-white outline-none transition focus:border-white/30 focus:ring-2 focus:ring-indigo-500/40"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="space-y-2 text-left">
-          <div className="flex items-center justify-between text-xs font-medium text-neutral-300">
-            <label htmlFor="password">Password</label>
+          <div className="flex items-center justify-between text-xs font-semibold text-slate-400/80">
+            <label htmlFor="password" className="uppercase tracking-[0.2em]">
+              Password
+            </label>
             <button
               type="button"
-              className="text-neutral-400 hover:text-neutral-200"
+              className="text-slate-200/80 underline-offset-2 hover:text-white"
               onClick={() => setMode(mode === "sign-in" ? "sign-up" : "sign-in")}
             >
               {modeCopy.toggle} <span className="underline">{modeCopy.cta}</span>
@@ -150,17 +150,17 @@ export function LoginForm() {
             type="password"
             autoComplete={mode === "sign-up" ? "new-password" : "current-password"}
             required
-            className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 outline-none transition focus:border-neutral-500 focus:ring-2 focus:ring-neutral-500/40"
+            className="w-full rounded-xl border border-white/10 bg-slate-950/70 px-3 py-3 text-sm text-white outline-none transition focus:border-white/30 focus:ring-2 focus:ring-indigo-500/40"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        {error ? <p className="text-xs text-rose-400">{error}</p> : null}
-        {message ? <p className="text-xs text-emerald-400">{message}</p> : null}
+        {error ? <p className="text-xs text-rose-300">{error}</p> : null}
+        {message ? <p className="text-xs text-emerald-300">{message}</p> : null}
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-md bg-white px-4 py-2 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
+          className="w-full rounded-full bg-indigo-500/90 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {loading ? "Processing..." : modeCopy.title}
         </button>

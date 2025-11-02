@@ -74,9 +74,10 @@ export function LoginForm() {
       setLoading(true);
       setError(null);
       try {
+        const basePath = '/Static-site-manager';
         const { error: oauthError } = await supabase.auth.signInWithOAuth({
           provider: "github",
-          options: { redirectTo: `${window.location.origin}/dashboard` },
+          options: { redirectTo: `${window.location.origin}${basePath}/dashboard` },
         });
         if (oauthError) {
           throw oauthError;

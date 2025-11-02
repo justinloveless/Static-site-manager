@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!isLoading && session) {
-      router.replace("/dashboard");
+      router.replace("/Static-site-manager/dashboard");
     }
   }, [isLoading, router, session]);
 
@@ -31,7 +31,7 @@ export default function Home() {
       </div>
       <div className="flex flex-wrap items-center justify-center gap-4">
         <Link
-          href="/login"
+          href="/Static-site-manager/login"
           className="rounded-md bg-white px-6 py-3 font-medium text-neutral-950 transition hover:bg-neutral-200"
         >
           Sign in to continue

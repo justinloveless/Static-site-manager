@@ -43,7 +43,7 @@ export function LoginForm() {
           if (signInError) {
             throw signInError;
           }
-          router.replace("/dashboard");
+          router.replace("/Static-site-manager/dashboard");
           router.refresh();
         } else {
           const { error: signUpError, data } = await supabase.auth.signUp({
@@ -54,7 +54,7 @@ export function LoginForm() {
             throw signUpError;
           }
           if (data.session) {
-            router.replace("/dashboard");
+            router.replace("/Static-site-manager/dashboard");
             router.refresh();
           } else {
             setMessage("Check your inbox to confirm your email address.");
